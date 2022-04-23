@@ -7,7 +7,9 @@ Website Link
 https://portfolio-995e3.web.app/#HomePage
 
 *RESPONSIVE SCREEN
+
 ![Screenshot 2022-04-23 154957](https://user-images.githubusercontent.com/53872301/164890558-b0b57fc4-4361-4c03-90fd-01f0da383de5.png)
+
 ![Screenshot 2022-04-23 154917](https://user-images.githubusercontent.com/53872301/164890561-88b07344-72cf-4847-83bb-c36ecb69aca3.png)
 
 
