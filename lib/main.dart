@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:portfolio/Screens/splash_screen.dart';
 import 'package:sizer/sizer.dart';
 import 'Screens/home_screen.dart';
