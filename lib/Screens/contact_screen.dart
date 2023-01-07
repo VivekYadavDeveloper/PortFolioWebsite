@@ -1,8 +1,9 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:portfolio/kcolor.dart';
-import 'package:sizer/sizer.dart';
+
 import 'package:url_launcher/url_launcher.dart';
 
 import '../Social Buttons/social_buttons.dart';
@@ -32,8 +33,8 @@ class _ContactScreenState extends State<ContactScreen> {
           child: Text(
             "  Contact Me",
             style: GoogleFonts.satisfy(
-              fontSize: 17.0.sp,
-              color: KTextcolor,
+              // fontSize: 17.0.sp,
+              // color: KTextcolor,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -41,7 +42,7 @@ class _ContactScreenState extends State<ContactScreen> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            iconButton(
+          
               IconButton(
                 color: Colors.blue,
                 icon: const FaIcon(FontAwesomeIcons.linkedinIn),
@@ -50,15 +51,15 @@ class _ContactScreenState extends State<ContactScreen> {
                   _launchURL(uri);
                 },
               ),
-            ),
-            iconButton(
+           
+           
               const IconButton(
                 color: Colors.redAccent,
                 icon: FaIcon(FontAwesomeIcons.at),
                 onPressed: _sendingMails,
               ),
-            ),
-            iconButton(
+          
+           
               IconButton(
                 color: Colors.black,
                 icon: const FaIcon(FontAwesomeIcons.github),
@@ -66,9 +67,8 @@ class _ContactScreenState extends State<ContactScreen> {
                   const uri = "https://github.com/VivekYadavDeveloper";
                   _launchURL(uri);
                 },
-              ),
-            ),
-          ],
+         
+        )],
         ),
 
         //**For Resume**//
@@ -80,43 +80,43 @@ class _ContactScreenState extends State<ContactScreen> {
           ),
         ),
         const Divider(),
-        SizedBox(
-          height: 7.0.h,
-        ),
+        const SizedBox(
+            // height: 7.0.h,
+            ),
         Text(
           "Address",
           style: GoogleFonts.satisfy(
-            fontSize: 20.0.sp,
-            color: KTextcolor,
+            // fontSize: 20.0.sp,
+            // color: KTextcolor,
             fontWeight: FontWeight.bold,
           ),
         ),
-        SelectableText(
+        const SelectableText(
           "HEADWALI (JHAJRA) NEAR NIMBUS ACADEMY \nP.O: SUDHOWALA \nPIN: 248015,DEHRADUN, \nUTTARAKHAND, INDIA",
           style: TextStyle(
-            fontSize: 8.sp,
-            color: kTextbgcolor,
-          ),
+              // fontSize: 8.sp,
+              // color: kTextbgcolor,
+              ),
         ),
         const Divider(),
-        SizedBox(
-          height: 7.0.h,
-        ),
+        const SizedBox(
+            // height: 7.0.h,
+            ),
         Text(
           "Phone Number",
           style: GoogleFonts.satisfy(
-            fontSize: 17.0.sp,
-            color: KTextcolor,
+            // fontSize: 17.0.sp,
+            // color: KTextcolor,
             fontWeight: FontWeight.bold,
           ),
         ),
-        InkWell(
+        const InkWell(
           child: Text(
             "📞 +91 7830056243",
             style: TextStyle(
-              fontSize: 9.sp,
-              color: kTextbgcolor,
-            ),
+                // fontSize: 9.sp,
+                // color: kTextbgcolor,
+                ),
           ),
           onTap: _makingPhonecall,
         ),

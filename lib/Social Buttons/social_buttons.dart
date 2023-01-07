@@ -1,23 +1,11 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:portfolio/kcolor.dart';
-import 'package:sizer/sizer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-//**** For Social Media Icons ****/
-Widget iconButton(IconButton faIcon) {
-  return Expanded(
-    child: Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: IconButton(
-        iconSize: 5.0.h,
-        icon: faIcon,
-        onPressed: () {},
-      ),
-    ),
-  );
-}
+
 
 //**** For Downloading My Resume ****/
 Widget textButton(TextButton button) {
@@ -25,7 +13,7 @@ Widget textButton(TextButton button) {
     padding: const EdgeInsets.all(10.0),
     child: TextButton.icon(
       style: TextButton.styleFrom(
-        backgroundColor: kTextBtncolor,
+        // backgroundColor: kTextBtncolor,
       ),
       onPressed: () {
         const uri =
