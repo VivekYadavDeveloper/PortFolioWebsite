@@ -27,8 +27,8 @@ class _DesktopViewState extends State<DesktopView> {
 
   //*** For Launching URls */
   Future<void> _launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
+    if (await canLaunchUrl(Uri(userInfo: url))) {
+      await launchUrl(Uri(userInfo: url));
     } else {
       print("Could Not Launch $url");
     }
@@ -44,16 +44,18 @@ class _DesktopViewState extends State<DesktopView> {
       appBar: AppBar(
         backgroundColor: themeChange ? AppColors.mirage : AppColors.shadePurple,
         title: Text("< Vivek Yadav />",
-                style: TextStyle(color: themeChange? AppColors.activeColor:AppColors.blackPearl)),
+            style: TextStyle(
+                color: themeChange
+                    ? AppColors.activeColor
+                    : AppColors.blackPearl)),
         actions: [
           TextButton(
             onPressed: () {},
-            child: Text("Home", style: TextStyle(color: themeChange? AppColors.activeColor:AppColors.blackPearl)),
-          ),
-          TextButton(
-            onPressed: () {},
-            child: Text("Projects",
-                style: TextStyle(color: themeChange? AppColors.activeColor:AppColors.blackPearl)),
+            child: Text("Home",
+                style: TextStyle(
+                    color: themeChange
+                        ? AppColors.activeColor
+                        : AppColors.blackPearl)),
           ),
           IconButton(
               color: themeChange ? AppColors.white : AppColors.blackPearl,
@@ -192,7 +194,11 @@ class _DesktopViewState extends State<DesktopView> {
                               hoverColor: themeChange
                                   ? AppColors.activeColor
                                   : AppColors.purpelColor,
-                              onPressed: () {},
+                              onPressed: () {
+                                var url =
+                                    "https://www.instagram.com/thevivekyadavofficial/";
+                                _launchURL(url);
+                              },
                               icon: FaIcon(
                                 FontAwesomeIcons.instagram,
                                 size: 25,
@@ -220,7 +226,9 @@ class _DesktopViewState extends State<DesktopView> {
                               hoverColor: themeChange
                                   ? AppColors.activeColor
                                   : AppColors.purpelColor,
-                              onPressed: () {},
+                              onPressed: () {
+                                var url = "";
+                              },
                               icon: FaIcon(
                                 FontAwesomeIcons.discord,
                                 size: 25,
@@ -543,17 +551,19 @@ class _DesktopViewState extends State<DesktopView> {
                               ),
                             ),
                             onTapCardWidgets(
-                                "Another Portfolio\n",
-                                "Developer Portfolio Build On Flutter",
-                                context,
-                                themeChange
-                                    ? AppColors.shinePurpleBlue
-                                    : AppColors.purpelColor,
-                                themeChange
-                                    ? AppColors.shinePurpleBlue
-                                    : AppColors.shadePurple, () {
-                              print("Github");
-                            },),
+                              "Another Portfolio\n",
+                              "Developer Portfolio Build On Flutter",
+                              context,
+                              themeChange
+                                  ? AppColors.shinePurpleBlue
+                                  : AppColors.purpelColor,
+                              themeChange
+                                  ? AppColors.shinePurpleBlue
+                                  : AppColors.shadePurple,
+                              () {
+                                print("Github");
+                              },
+                            ),
                           ],
                         ),
                       ],
@@ -563,16 +573,17 @@ class _DesktopViewState extends State<DesktopView> {
                       padding: const EdgeInsets.only(left: 50.0),
                       child: Text.rich(
                         TextSpan(
-                            text: "----------------------- Made with ",
-                            children: const <TextSpan>[
-                              TextSpan(
-                                  text: "❤",
-                                  style: TextStyle(
-                                      color: Colors.red, fontSize: 25)),
-                              TextSpan(
-                                  text:
-                                      " by Vivek Yadav ---------------------------")
-                            ]),
+                          text: "----------------------- Made with ",
+                          children: const <TextSpan>[
+                            TextSpan(
+                                text: "❤",
+                                style:
+                                    TextStyle(color: Colors.red, fontSize: 25)),
+                            TextSpan(
+                                text:
+                                    " by Vivek Yadav ---------------------------")
+                          ],
+                        ),
                         textAlign: TextAlign.center,
                       ),
                     ),

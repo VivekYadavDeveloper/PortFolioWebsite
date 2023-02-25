@@ -1,14 +1,15 @@
 // ignore_for_file: prefer_const_constructors, avoid_print
 
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:portfolio/Screens/contact_screen.dart';
+import 'package:lottie/lottie.dart';
 import 'package:portfolio/Constant/constant.dart';
 import 'package:provider/provider.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
+import '../Screens/Widgets/custom_widgets.dart';
 import '../Theme/theme_model.dart';
 
 class MobileView extends StatefulWidget {
@@ -20,11 +21,15 @@ class MobileView extends StatefulWidget {
 
 class _MobileViewState extends State<MobileView> {
   final int _currentTime = DateTime.now().year;
+  void _toggleTheme() {
+    final setting = Provider.of<ThemeNotifier>(context, listen: false);
+    setting.toggleTheme();
+  }
 
   //*** For Launching URls */
   Future<void> _launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
+    if (await canLaunchUrl(Uri(userInfo: url))) {
+      await launchUrl(Uri(userInfo: url));
     } else {
       print("Could Not Launch $url");
     }
@@ -32,178 +37,481 @@ class _MobileViewState extends State<MobileView> {
 
   @override
   Widget build(BuildContext context) {
+    final sizeHeight = MediaQuery.of(context).size.height;
+    final sizeWidth = MediaQuery.of(context).size.width;
     var themeChange = Provider.of<ThemeNotifier>(context).darkTheme;
+
     return Scaffold(
       backgroundColor: themeChange ? AppColors.mirage : AppColors.shadePurple,
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-            children: <Widget>[
-              const CircleAvatar(
-                radius: 50,
-                // maxRadius: 35.0,
-                backgroundImage: AssetImage("assets/image/Profile.png"),
-              ),
-
-              RichText(
-                text: TextSpan(
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: "Hey! \n",
-                      style: GoogleFonts.cookie(
-                        textStyle: TextStyle(
-                          color: const Color(0xFF139487),
-                          // fontSize: 20.0.sp,
+      appBar: AppBar(
+        backgroundColor: themeChange ? AppColors.mirage : AppColors.shadePurple,
+        title: AnimatedTextKit(totalRepeatCount: 20, animatedTexts: [
+          TypewriterAnimatedText("</Vivek Yadav/>",
+              textAlign: TextAlign.left,
+              textStyle: TextStyle(
+                  color: themeChange
+                      ? AppColors.activeColor
+                      : AppColors.blackPearl))
+        ]),
+        actions: [
+          IconButton(
+              color: themeChange ? AppColors.white : AppColors.blackPearl,
+              onPressed: _toggleTheme,
+              icon: Icon(
+                  themeChange ? FontAwesomeIcons.sun : FontAwesomeIcons.moon)),
+        ],
+      ),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text.rich(
+                      TextSpan(
+                        text: "Hello! Coders ",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: sizeHeight / 15,
                         ),
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: "I'm \n",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: sizeHeight / 15,
+                              color: themeChange
+                                  ? AppColors.activeColor
+                                  : AppColors.blackPearl,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "Vivek Yadav\n\n",
+                            style: TextStyle(
+                              color: themeChange
+                                  ? AppColors.activeColor
+                                  : AppColors.blackPearl,
+                            ),
+                          ),
+                          TextSpan(
+                            text:
+                                "Flutter/Android (Jetpack Compose)\nDeveloper.\n\n",
+                            style: TextStyle(
+                                overflow: TextOverflow.ellipsis,
+                                color: themeChange
+                                    ? AppColors.white
+                                    : AppColors.blackPearl,
+                                fontSize:
+                                    MediaQuery.of(context).size.height / 35),
+                          ),
+                          TextSpan(
+                            text:
+                                "AKA Vivek. Flutter/Android Developer from India,\nDehradun/Uttar Pradesh with \nA code-minded front-end software engineer \nfocused on building beautiful interfaces\n& experiences and Convert Ideas, \nDesign To System With Frontend Side\n(Android Apps, Flutter Application)\nalso The Backend Side With \n(SpringBoot, Ktor, Nest.js) Always Trying \nTo Build Tools To Help and Improve My Work.",
+                            style: TextStyle(
+                                overflow: TextOverflow.visible,
+                                color: themeChange
+                                    ? AppColors.white
+                                    : AppColors.blackPearl,
+                                fontSize:
+                                    MediaQuery.of(context).size.height / 40),
+                          ),
+                        ],
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+                SizedBox(height: sizeHeight / 65),
+                Container(
+                  height: sizeHeight / 5,
+                  width: sizeWidth / 2,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color:
+                        themeChange ? AppColors.mirage : AppColors.purpelColor,
+                    image: DecorationImage(
+                        image: NetworkImage("assets/image/two.png"),
+                        fit: BoxFit.cover),
+                    boxShadow: <BoxShadow>[
+                      BoxShadow(
+                        color: themeChange
+                            ? AppColors.rawShadow
+                            : AppColors.blackPearl,
+                        offset: Offset(0.0, 5.0),
+                        blurRadius: 6.0,
+                        spreadRadius: 2.0,
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 2.0, top: 20),
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      height: sizeHeight / 25,
+                      width: sizeWidth / 5,
+                      decoration: BoxDecoration(
+                        color: AppColors.activeColor,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: AppColors.rawShadow,
+                            blurRadius: 12.0,
+                            spreadRadius: .10,
+                            offset: Offset(0, 7),
+                          ),
+                        ],
+                      ),
+                      child: Center(child: Text("Let's Talk")),
+                    ),
+                  ),
+                ),
+                SizedBox(height: sizeHeight / 20),
+                Text("Check Out My :"),
+                SizedBox(height: sizeHeight / 45),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    SizedBox(
+                      width: sizeWidth / 65,
+                    ),
+                    IconButton(
+                      splashRadius: 30,
+                      hoverColor: themeChange
+                          ? AppColors.activeColor
+                          : AppColors.purpelColor,
+                      onPressed: () {},
+                      icon: FaIcon(
+                        FontAwesomeIcons.instagram,
+                        size: 25,
                       ),
                     ),
-                    TextSpan(
-                      text: "This Is ",
-                      style: GoogleFonts.spectralSc(
-                        textStyle: TextStyle(
-                          color: const Color(0xFF1C658C),
-                          // fontSize: 17.0.sp,
-                        ),
+                    SizedBox(
+                      width: sizeWidth / 65,
+                    ),
+                    IconButton(
+                      splashRadius: 30,
+                      hoverColor: themeChange
+                          ? AppColors.activeColor
+                          : AppColors.purpelColor,
+                      onPressed: () {},
+                      icon: FaIcon(
+                        FontAwesomeIcons.linkedinIn,
+                        size: 25,
                       ),
                     ),
-                    TextSpan(
-                      text: "Vivek Yadav \n",
-                      style: GoogleFonts.spectralSc(
-                        textStyle: TextStyle(
-                          color: const Color(0xFF1C658C),
-                          // fontSize: 17.0.sp,
-                        ),
+                    SizedBox(
+                      width: sizeWidth / 65,
+                    ),
+                    IconButton(
+                      splashRadius: 30,
+                      hoverColor: themeChange
+                          ? AppColors.activeColor
+                          : AppColors.purpelColor,
+                      onPressed: () {},
+                      icon: FaIcon(
+                        FontAwesomeIcons.discord,
+                        size: 25,
                       ),
                     ),
-                    TextSpan(
-                      text: "An Aspiring Android/ Flutter Developer.",
-                      style: TextStyle(
-                        // fontSize: 12.sp,
-                        color: const Color(0xFF5B6478),
+                    SizedBox(
+                      width: sizeWidth / 65,
+                    ),
+                    IconButton(
+                      splashRadius: 30,
+                      hoverColor: themeChange
+                          ? AppColors.activeColor
+                          : AppColors.purpelColor,
+                      onPressed: () {},
+                      icon: FaIcon(
+                        FontAwesomeIcons.github,
+                        size: 25,
                       ),
                     ),
                   ],
                 ),
-              ),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  
-                    IconButton(
-                      color: Colors.black,
-                      icon: const FaIcon(FontAwesomeIcons.github),
-                      onPressed: () {
-                        const uri = "https://github.com/VivekYadavDeveloper";
-                        _launchURL(uri);
-                      },
-                    ),
-             
-                 
-                    IconButton(
-                      color: Colors.blue,
-                      icon: const FaIcon(FontAwesomeIcons.linkedinIn),
-                      onPressed: () {
-                        const uri =
-                            "https://www.linkedin.com/in/vivekyadavtiger";
-                        _launchURL(uri);
-                      },
-                    ),
-                  
-                 
-                    IconButton(
-                      color: Colors.pinkAccent,
-                      icon: const FaIcon(FontAwesomeIcons.instagram),
-                      onPressed: () {
-                        const uri =
-                            "https://www.instagram.com/thevivekyadavofficial/";
-                        _launchURL(uri);
-                      },
-                    ),
-               
-                
-                    IconButton(
-                      color: Colors.lightBlue,
-                      icon: const FaIcon(FontAwesomeIcons.twitter),
-                      onPressed: () {
-                        const uri = "https://twitter.com/VivekYadavDev";
-                        _launchURL(uri);
-                      },
-                    ),
-                 
-                 
-                    IconButton(
-                      color: Colors.red,
-                      icon: const FaIcon(FontAwesomeIcons.youtube),
-                      onPressed: () {
-                        const uri =
-                            "https://www.youtube.com/c/VivekYadavOfficial/about";
-                        _launchURL(uri);
-                        print("LogIn");
-                      },
-                    ),
-               
-                ],
-              ),
-              const Divider(),
-              // Lottie.asset("assets/LottieLogo."),
-              // SizedBox(height: 8.5.h),
-              Center(
-                child: Text(
-                  "What I Do ?",
-                  style: GoogleFonts.satisfy(
-                    // fontSize: 20.0.sp,
-                    fontWeight: FontWeight.bold,
-                    // color: KTextcolor,
-                  ),
-                ),
-              ),
-
-              Padding(
-                padding: const EdgeInsets.only(top: 50.0),
-                child: Text(
-                  "Android / Flutter Development",
-                  style: GoogleFonts.spectralSc(
-                      // fontSize: 12.0.sp,
-                      // color: KTextcolor
+                SizedBox(height: sizeHeight / 35),
+                Text.rich(
+                  TextSpan(
+                    text: "What Does ",
+                    style: TextStyle(fontSize: 18),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: " He Do?",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: themeChange
+                              ? AppColors.activeColor
+                              : AppColors.blackPearl,
+                        ),
                       ),
-                ),
-              ),
-              SizedBox(
-                  // height: 5.0.h,
+                    ],
                   ),
-              Text(
-                "⚡ Building Android Application Using Flutter \n      Framework.\n⚡ Creating Application Backend In Firebase. \n⚡ Building Android Application Using Modern  \n      Android  Development Practices.",
-                style: GoogleFonts.spectralSc(
-                    // fontSize: 9.5.sp,
-                    // color: kTextbgcolor,
+                ),
+                SizedBox(height: sizeHeight / 25),
+                Text(
+                  "He creates elegant, logical \nmobile app solutions.In his hobby time,\nhe learn tech and mostly watch anime.",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20),
+                ),
+                SizedBox(height: sizeHeight / 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text.rich(
+                      TextSpan(
+                        text: "Think.",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: sizeHeight / 25),
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: " Code. ",
+                            style: TextStyle(
+                              color: themeChange
+                                  ? AppColors.activeColor
+                                  : AppColors.blackPearl,
+                            ),
+                          ),
+                          TextSpan(text: "Debug."),
+                          TextSpan(
+                            text: " Repeat. ",
+                            style: TextStyle(
+                              color: themeChange
+                                  ? AppColors.activeColor
+                                  : AppColors.blackPearl,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-              ),
-              const Divider(),
-              const ContactScreen(),
-              SizedBox(
-                  // height: 8.5.h,
+                  ],
+                ),
+                SizedBox(height: sizeHeight / 10),
+                Text.rich(
+                  TextSpan(
+                    text: "What Does ",
+                    style: TextStyle(fontSize: 18),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: " Skills",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: themeChange
+                              ? AppColors.activeColor
+                              : AppColors.blackPearl,
+                        ),
+                      ),
+                      TextSpan(
+                        text: " He Have?",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: themeChange
+                              ? AppColors.activeColor
+                              : AppColors.blackPearl,
+                        ),
+                      ),
+                    ],
                   ),
-              Text(
-                'Made With 😍 Love',
-                style: TextStyle(
-                  // fontSize: 7.sp,
-                  color: const Color(0xFF5B6478),
                 ),
-              ),
-              Text(
-                "©$_currentTime Vivek - All Rights Reserved",
-                style: GoogleFonts.spectralSc(
-                  // fontSize: 8.0.sp,
-                  // color: KTextcolor,
-                  fontWeight: FontWeight.bold,
+                Row(
+                  // mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Expanded(
+                      child: GridView(
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                            mainAxisSpacing: 5,
+                            // crossAxisSpacing: 1,
+                            mainAxisExtent: 80),
+                        children: <Widget>[
+                          Lottie.network(
+                            "assets/animation/Flutter.json",
+                            fit: BoxFit.contain,
+                            filterQuality: FilterQuality.low,
+                          ),
+                          Lottie.network(
+                            "assets/animation/Android.json",
+                            fit: BoxFit.contain,
+                            filterQuality: FilterQuality.low,
+                          ),
+                          Lottie.network(
+                            "assets/animation/Android Studio.json",
+                            fit: BoxFit.contain,
+                            filterQuality: FilterQuality.low,
+                          ),
+                          Lottie.network(
+                            "assets/animation/html.json",
+                            fit: BoxFit.contain,
+                            filterQuality: FilterQuality.low,
+                          ),
+                          Lottie.network(
+                            "assets/animation/Mysql.json",
+                            fit: BoxFit.contain,
+                            filterQuality: FilterQuality.low,
+                          ),
+                          Lottie.network(
+                            "assets/animation/Github.json",
+                            fit: BoxFit.contain,
+                            filterQuality: FilterQuality.low,
+                          ),
+                          Lottie.network(
+                            "assets/animation/Git.json",
+                            fit: BoxFit.contain,
+                            filterQuality: FilterQuality.low,
+                          ),
+                          Lottie.network(
+                            "assets/animation/css white.json",
+                            fit: BoxFit.contain,
+                            filterQuality: FilterQuality.low,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-              )
-            ],
-          ),
-        ),
+                SizedBox(height: sizeHeight / 70),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text.rich(
+                      TextSpan(
+                        text:
+                            "Currently enhancing travelling at headout as a.\n",
+                        style: TextStyle(fontSize: 20),
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: "Flutter / Android",
+                            style: TextStyle(fontSize: 25),
+                          ),
+                          TextSpan(
+                            text: " Developer.",
+                            style: TextStyle(
+                                color: themeChange
+                                    ? AppColors.activeColor
+                                    : AppColors.blackPearl,
+                                fontSize: 25),
+                          ),
+                        ],
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+                Lottie.network(
+                  "assets/animation/colored rocket.json",
+                  fit: BoxFit.scaleDown,
+                  height: sizeHeight / 3,
+                  // width: sizeWidth / 5,
+                  filterQuality: FilterQuality.low,
+                ),
+                cardWidgets(
+                  "Websits\n",
+                  "He created his portfolio websites with flutter with elegant look.",
+                  context,
+                  themeChange
+                      ? AppColors.shinePurpleBlue
+                      : AppColors.whiteShade,
+                  themeChange
+                      ? AppColors.shinePurpleBlue
+                      : AppColors.blackPearl,
+                ),
+                cardWidgets(
+                  "Apps\n",
+                  "He created some awesome android/iOS application with flutter.",
+                  context,
+                  themeChange ? AppColors.shineBieg : AppColors.whiteShadeTwo,
+                  themeChange ? AppColors.shineBieg : AppColors.blackPearl,
+                ),
+                cardWidgets(
+                  "Working\n",
+                  "He is working on some upcomming application.",
+                  context,
+                  themeChange
+                      ? AppColors.shinePurpleBlue
+                      : AppColors.purpelColor,
+                  themeChange
+                      ? AppColors.shinePurpleBlue
+                      : AppColors.blackPearl,
+                ),
+                SizedBox(
+                  height: sizeHeight / 50,
+                ),
+                Text.rich(
+                  TextSpan(
+                    text: "Love This ",
+                    style: TextStyle(fontSize: 18),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: "Website?",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: themeChange
+                              ? AppColors.activeColor
+                              : AppColors.blackPearl,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: sizeHeight / 50,
+                ),
+                Text.rich(
+                  TextSpan(
+                    text: "Loved this portfolio? Make this yours by forking.\n",
+                    style: TextStyle(fontSize: 20),
+                    children: const <TextSpan>[
+                      TextSpan(
+                          text: "Visit Github Repository",
+                          style: TextStyle(fontSize: 25.0))
+                    ],
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(
+                  height: sizeHeight / 50,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 60),
+                  child: onTapCardWidgets(
+                    "Another Portfolio\n",
+                    "Developer Portfolio Build On Flutter",
+                    context,
+                    themeChange ? AppColors.shineBieg : AppColors.whiteShadeTwo,
+                    themeChange
+                        ? AppColors.shinePurpleBlue
+                        : AppColors.blackPearl,
+                    () {
+                      print("Github");
+                    },
+                  ),
+                ),
+                SizedBox(height: 20),
+                Text.rich(
+                  TextSpan(
+                    text: "Made with ",
+                    children: const <TextSpan>[
+                      TextSpan(
+                          text: "❤",
+                          style: TextStyle(color: Colors.red, fontSize: 25)),
+                      TextSpan(text: " by Vivek Yadav")
+                    ],
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: 20),
+              ],
+            ),
+          );
+        },
       ),
     );
   }
