@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, avoid_print, sized_box_for_whitespace
 
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lottie/lottie.dart';
@@ -26,13 +27,6 @@ class _DesktopViewState extends State<DesktopView> {
   final int _currentTime = DateTime.now().year;
 
   //*** For Launching URls */
-  Future<void> _launchURL(String url) async {
-    if (await canLaunchUrl(Uri(userInfo: url))) {
-      await launchUrl(Uri(userInfo: url));
-    } else {
-      print("Could Not Launch $url");
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,11 +37,14 @@ class _DesktopViewState extends State<DesktopView> {
       backgroundColor: themeChange ? AppColors.mirage : AppColors.shadePurple,
       appBar: AppBar(
         backgroundColor: themeChange ? AppColors.mirage : AppColors.shadePurple,
-        title: Text("< Vivek Yadav />",
-            style: TextStyle(
-                color: themeChange
-                    ? AppColors.activeColor
-                    : AppColors.blackPearl)),
+        title: AnimatedTextKit(totalRepeatCount: 20, animatedTexts: [
+          TypewriterAnimatedText("<Vivek Yadav/>",
+              textAlign: TextAlign.left,
+              textStyle: TextStyle(
+                  color: themeChange
+                      ? AppColors.activeColor
+                      : AppColors.blackPearl))
+        ]),
         actions: [
           TextButton(
             onPressed: () {},
@@ -158,7 +155,11 @@ class _DesktopViewState extends State<DesktopView> {
                         Padding(
                           padding: EdgeInsets.only(left: 62.0, top: 40),
                           child: GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              const uri = "mailto:vk662967@gmail.com";
+
+                              _launchURL(uri);
+                            },
                             child: Container(
                               height: sizeHeight / 25,
                               width: sizeWidth / 15,
@@ -212,7 +213,11 @@ class _DesktopViewState extends State<DesktopView> {
                               hoverColor: themeChange
                                   ? AppColors.activeColor
                                   : AppColors.purpelColor,
-                              onPressed: () {},
+                              onPressed: () {
+                                const uri =
+                                    "https://www.linkedin.com/in/vivekyadavtiger";
+                                _launchURL(uri);
+                              },
                               icon: FaIcon(
                                 FontAwesomeIcons.linkedinIn,
                                 size: 25,
@@ -227,7 +232,9 @@ class _DesktopViewState extends State<DesktopView> {
                                   ? AppColors.activeColor
                                   : AppColors.purpelColor,
                               onPressed: () {
-                                var url = "";
+                                const uri =
+                                    "https://discordapp.com/users/Vivek#5807";
+                                _launchURL(uri);
                               },
                               icon: FaIcon(
                                 FontAwesomeIcons.discord,
@@ -242,7 +249,11 @@ class _DesktopViewState extends State<DesktopView> {
                               hoverColor: themeChange
                                   ? AppColors.activeColor
                                   : AppColors.purpelColor,
-                              onPressed: () {},
+                              onPressed: () {
+                                const uri =
+                                    "https://github.com/VivekYadavDeveloper";
+                                _launchURL(uri);
+                              },
                               icon: FaIcon(
                                 FontAwesomeIcons.github,
                                 size: 25,
@@ -561,6 +572,9 @@ class _DesktopViewState extends State<DesktopView> {
                                   ? AppColors.shinePurpleBlue
                                   : AppColors.shadePurple,
                               () {
+                                const uri =
+                                    "https://github.com/VivekYadavDeveloper/PortFolioWebsite";
+                                _launchURL(uri);
                                 print("Github");
                               },
                             ),
@@ -595,5 +609,13 @@ class _DesktopViewState extends State<DesktopView> {
         },
       ),
     );
+  }
+
+  Future<void> _launchURL(String url) async {
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url));
+    } else {
+      print("Could Not Launch $url");
+    }
   }
 }

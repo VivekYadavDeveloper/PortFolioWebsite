@@ -27,13 +27,6 @@ class _MobileViewState extends State<MobileView> {
   }
 
   //*** For Launching URls */
-  Future<void> _launchURL(String url) async {
-    if (await canLaunchUrl(Uri(userInfo: url))) {
-      await launchUrl(Uri(userInfo: url));
-    } else {
-      print("Could Not Launch $url");
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +39,7 @@ class _MobileViewState extends State<MobileView> {
       appBar: AppBar(
         backgroundColor: themeChange ? AppColors.mirage : AppColors.shadePurple,
         title: AnimatedTextKit(totalRepeatCount: 20, animatedTexts: [
-          TypewriterAnimatedText("</Vivek Yadav/>",
+          TypewriterAnimatedText("<Vivek Yadav/>",
               textAlign: TextAlign.left,
               textStyle: TextStyle(
                   color: themeChange
@@ -150,7 +143,11 @@ class _MobileViewState extends State<MobileView> {
                 Padding(
                   padding: EdgeInsets.only(left: 2.0, top: 20),
                   child: GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      const uri = "mailto:vk662967@gmail.com";
+
+                      _launchURL(uri);
+                    },
                     child: Container(
                       height: sizeHeight / 25,
                       width: sizeWidth / 5,
@@ -184,7 +181,11 @@ class _MobileViewState extends State<MobileView> {
                       hoverColor: themeChange
                           ? AppColors.activeColor
                           : AppColors.purpelColor,
-                      onPressed: () {},
+                      onPressed: () {
+                        const uri =
+                            "https://www.instagram.com/thevivekyadavofficial";
+                        _launchURL(uri);
+                      },
                       icon: FaIcon(
                         FontAwesomeIcons.instagram,
                         size: 25,
@@ -198,7 +199,11 @@ class _MobileViewState extends State<MobileView> {
                       hoverColor: themeChange
                           ? AppColors.activeColor
                           : AppColors.purpelColor,
-                      onPressed: () {},
+                      onPressed: () {
+                        const uri =
+                            "https://www.linkedin.com/in/vivekyadavtiger";
+                        _launchURL(uri);
+                      },
                       icon: FaIcon(
                         FontAwesomeIcons.linkedinIn,
                         size: 25,
@@ -212,7 +217,10 @@ class _MobileViewState extends State<MobileView> {
                       hoverColor: themeChange
                           ? AppColors.activeColor
                           : AppColors.purpelColor,
-                      onPressed: () {},
+                      onPressed: () {
+                        const uri = "https://discordapp.com/users/Vivek#5807";
+                        _launchURL(uri);
+                      },
                       icon: FaIcon(
                         FontAwesomeIcons.discord,
                         size: 25,
@@ -226,7 +234,10 @@ class _MobileViewState extends State<MobileView> {
                       hoverColor: themeChange
                           ? AppColors.activeColor
                           : AppColors.purpelColor,
-                      onPressed: () {},
+                      onPressed: () {
+                        const uri = "https://github.com/VivekYadavDeveloper";
+                        _launchURL(uri);
+                      },
                       icon: FaIcon(
                         FontAwesomeIcons.github,
                         size: 25,
@@ -401,6 +412,7 @@ class _MobileViewState extends State<MobileView> {
                           ),
                         ],
                       ),
+                      overflow: TextOverflow.visible,
                       textAlign: TextAlign.center,
                     ),
                   ],
@@ -490,6 +502,9 @@ class _MobileViewState extends State<MobileView> {
                         ? AppColors.shinePurpleBlue
                         : AppColors.blackPearl,
                     () {
+                      const uri =
+                          "https://github.com/VivekYadavDeveloper/PortFolioWebsite";
+                      _launchURL(uri);
                       print("Github");
                     },
                   ),
@@ -514,5 +529,13 @@ class _MobileViewState extends State<MobileView> {
         },
       ),
     );
+  }
+
+  Future<void> _launchURL(String url) async {
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url));
+    } else {
+      print("Could Not Launch $url");
+    }
   }
 }
