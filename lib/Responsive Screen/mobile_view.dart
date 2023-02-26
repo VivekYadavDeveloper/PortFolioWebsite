@@ -79,14 +79,14 @@ class _MobileViewState extends State<MobileView> {
                         text: "Hello! Coders ",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: sizeHeight / 15,
+                          fontSize: sizeHeight / 25,
                         ),
                         children: <TextSpan>[
                           TextSpan(
                             text: "I'm \n",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: sizeHeight / 15,
+                              fontSize: sizeHeight / 20,
                               color: themeChange
                                   ? AppColors.activeColor
                                   : AppColors.blackPearl,
@@ -120,7 +120,7 @@ class _MobileViewState extends State<MobileView> {
                                     ? AppColors.white
                                     : AppColors.blackPearl,
                                 fontSize:
-                                    MediaQuery.of(context).size.height / 40),
+                                    MediaQuery.of(context).size.height / 55),
                           ),
                         ],
                       ),
@@ -289,7 +289,7 @@ class _MobileViewState extends State<MobileView> {
                         text: "Think.",
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: sizeHeight / 25),
+                            fontSize: sizeHeight / 35),
                         children: <TextSpan>[
                           TextSpan(
                             text: " Code. ",
@@ -407,11 +407,11 @@ class _MobileViewState extends State<MobileView> {
                       TextSpan(
                         text:
                             "Currently enhancing travelling at headout as a.\n",
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(fontSize: 15),
                         children: <TextSpan>[
                           TextSpan(
                             text: "Flutter / Android",
-                            style: TextStyle(fontSize: 25),
+                            style: TextStyle(fontSize: 21),
                           ),
                           TextSpan(
                             text: " Developer.",
