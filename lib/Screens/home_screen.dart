@@ -43,44 +43,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       opacity: _animation,
       child: Scaffold(
         backgroundColor: themeChange ? AppColors.mirage : AppColors.shadePurple,
-
-        // appBar: AppBar(
-        //   backgroundColor:
-        //       themeChange ? AppColors.mirage : AppColors.shadePurple,
-        //   title: const Text("< Vivek Yadav />"),
-        //   actions: [
-        //     IconButton(
-        //       color: themeChange ? AppColors.white : AppColors.blackPearl,
-        //       onPressed: _toggleTheme,
-        //       icon: Icon(
-        //           themeChange ? FontAwesomeIcons.sun : FontAwesomeIcons.moon),
-        //     )
-        //   ],
-        // ),
-        // appBar: AppBar(
-        //   elevation: 00,
-        //   title: Text(
-        //     "< Vivek Yadav />",
-        //     style: GoogleFonts.satisfy(
-        //       textStyle: TextStyle(
-        //           // color: KTextcolor,
-        //           fontSize: 12.0.sp,
-        //           fontWeight: FontWeight.normal),
-        //     ),
-        //   ),
-        //   flexibleSpace: Container(
-        //     decoration: const BoxDecoration(
-        //       gradient: LinearGradient(
-        //         begin: Alignment.centerLeft,
-        //         end: Alignment.bottomRight,
-        //         colors: <Color>[
-        //           Color(0xFFE1E5EA),
-        //           Color(0xFFFAF3F3),
-        //         ],
-        //       ),
-        //     ),
-        //   ),
-        // ),
         body: SafeArea(
           child: Container(
             width: double.infinity,

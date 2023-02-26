@@ -4,7 +4,6 @@ import 'package:portfolio/Theme/app_theme.dart';
 import 'package:portfolio/Theme/theme_model.dart';
 import 'package:provider/provider.dart';
 
-
 import 'Screens/home_screen.dart';
 
 void main() async {

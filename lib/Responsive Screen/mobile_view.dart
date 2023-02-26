@@ -20,7 +20,6 @@ class MobileView extends StatefulWidget {
 }
 
 class _MobileViewState extends State<MobileView> {
-  final int _currentTime = DateTime.now().year;
   void _toggleTheme() {
     final setting = Provider.of<ThemeNotifier>(context, listen: false);
     setting.toggleTheme();
@@ -47,6 +46,18 @@ class _MobileViewState extends State<MobileView> {
                       : AppColors.blackPearl))
         ]),
         actions: [
+          TextButton(
+            onPressed: () {
+              const uri =
+                  "https://docs.google.com/document/d/1XXXqbg_MmtjHuBW6-VsjUX_seUaINYOjlnbUHwuSmI0/edit?usp=sharing";
+              _launchURL(uri);
+            },
+            child: Text("Resume",
+                style: TextStyle(
+                    color: themeChange
+                        ? AppColors.activeColor
+                        : AppColors.blackPearl)),
+          ),
           IconButton(
               color: themeChange ? AppColors.white : AppColors.blackPearl,
               onPressed: _toggleTheme,

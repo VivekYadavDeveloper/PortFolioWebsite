@@ -22,7 +22,7 @@ languageList(Color themeData) {
   );
 }
 
-//:**** TODO //
+//: TODO 
 cardWidgets(
   String title,
   String subTitle,
@@ -95,7 +95,6 @@ onTapCardWidgets(String title, String subTitle, BuildContext context,
         child: ListTile(
           onTap: () {
             function;
-            print("Github");
           },
           title: Text(
             title,

@@ -24,8 +24,6 @@ class _DesktopViewState extends State<DesktopView> {
     setting.toggleTheme();
   }
 
-  final int _currentTime = DateTime.now().year;
-
   //*** For Launching URls */
 
   @override
@@ -47,8 +45,12 @@ class _DesktopViewState extends State<DesktopView> {
         ]),
         actions: [
           TextButton(
-            onPressed: () {},
-            child: Text("Home",
+            onPressed: () {
+              const uri =
+                  "https://docs.google.com/document/d/1XXXqbg_MmtjHuBW6-VsjUX_seUaINYOjlnbUHwuSmI0/edit?usp=sharing";
+              _launchURL(uri);
+            },
+            child: Text("Resume",
                 style: TextStyle(
                     color: themeChange
                         ? AppColors.activeColor
