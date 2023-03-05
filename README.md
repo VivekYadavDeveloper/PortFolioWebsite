@@ -1,7 +1,7 @@
 Portfolio Website With Flutter
 
 Website Link 
-https://portfolio-995e3.web.app/#HomePage
+https://portfolio-995e3.web.app
 
 *RESPONSIVE SCREEN(Desktop)
 
