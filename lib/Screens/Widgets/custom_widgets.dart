@@ -3,25 +3,6 @@ import 'package:provider/provider.dart';
 
 import '../../Constant/constant.dart';
 import '../../Theme/theme_model.dart';
-
-languageList(Color themeData) {
-  return Container(
-    decoration: BoxDecoration(
-      image: const DecorationImage(image: NetworkImage("assets/Profile.gif")),
-      boxShadow: <BoxShadow>[
-        BoxShadow(
-          color: AppColors.rawShadow,
-          blurRadius: 12.0,
-          spreadRadius: .10,
-          offset: const Offset(0, 7),
-        ),
-      ],
-      color: themeData,
-      borderRadius: BorderRadius.circular(10),
-    ),
-  );
-}
-
 //: TODO 
 cardWidgets(
   String title,
@@ -69,7 +50,7 @@ cardWidgets(
   );
 }
 
-///*** Tap able  custom list tile
+///*** Tap able custom list tile
 onTapCardWidgets(String title, String subTitle, BuildContext context,
     Color color, Color shadowColor, Function? function) {
   var themeChange = Provider.of<ThemeNotifier>(context).darkTheme;

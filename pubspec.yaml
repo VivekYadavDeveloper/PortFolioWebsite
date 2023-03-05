@@ -41,7 +41,6 @@ dependencies:
   lottie: ^2.1.0
   provider: ^6.0.5
   shared_preferences: ^2.0.15
-  sizer: ^2.0.15
   url_launcher: ^6.0.20
 
 dev_dependencies:

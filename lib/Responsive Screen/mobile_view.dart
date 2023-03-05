@@ -113,7 +113,7 @@ class _MobileViewState extends State<MobileView> {
                           ),
                           TextSpan(
                             text:
-                                "AKA Vivek. Flutter/Android Developer from India,\nDehradun/Uttar Pradesh with \nA code-minded front-end software engineer \nfocused on building beautiful interfaces\n& experiences and Convert Ideas, \nDesign To System With Frontend Side\n(Android Apps, Flutter Application)\nalso The Backend Side With \n(SpringBoot, Ktor, Nest.js) Always Trying \nTo Build Tools To Help and Improve My Work.",
+                                "AKA Vivek. Flutter/Android Developer from India,\nDehradun/Uttar Pradesh with \nA code-minded front-end software engineer \nfocused on building beautiful interfaces\n& experiences and Convert Ideas, \nDesign To System With Frontend Side\n(Android Apps, Flutter Application)\nalso The Backend Side With \n(Express.js) Always Trying \nTo Build Tools To Help and Improve My Work.",
                             style: TextStyle(
                                 overflow: TextOverflow.visible,
                                 color: themeChange
@@ -137,7 +137,7 @@ class _MobileViewState extends State<MobileView> {
                     color:
                         themeChange ? AppColors.mirage : AppColors.purpelColor,
                     image: DecorationImage(
-                        image: NetworkImage("assets/image/two.png"),
+                        image: Image.asset("assets/image/two.png").image,
                         fit: BoxFit.cover),
                     boxShadow: <BoxShadow>[
                       BoxShadow(
@@ -354,42 +354,42 @@ class _MobileViewState extends State<MobileView> {
                             // crossAxisSpacing: 1,
                             mainAxisExtent: 80),
                         children: <Widget>[
-                          Lottie.network(
-                            "assets/animation/Flutter.json",
+                          Lottie.asset(
+                            "assets/animation/flutter.json",
                             fit: BoxFit.contain,
                             filterQuality: FilterQuality.low,
                           ),
-                          Lottie.network(
+                          Lottie.asset(
                             "assets/animation/Android.json",
                             fit: BoxFit.contain,
                             filterQuality: FilterQuality.low,
                           ),
-                          Lottie.network(
+                          Lottie.asset(
                             "assets/animation/Android Studio.json",
                             fit: BoxFit.contain,
                             filterQuality: FilterQuality.low,
                           ),
-                          Lottie.network(
+                          Lottie.asset(
                             "assets/animation/html.json",
                             fit: BoxFit.contain,
                             filterQuality: FilterQuality.low,
                           ),
-                          Lottie.network(
+                          Lottie.asset(
                             "assets/animation/Mysql.json",
                             fit: BoxFit.contain,
                             filterQuality: FilterQuality.low,
                           ),
-                          Lottie.network(
+                          Lottie.asset(
                             "assets/animation/Github.json",
                             fit: BoxFit.contain,
                             filterQuality: FilterQuality.low,
                           ),
-                          Lottie.network(
+                          Lottie.asset(
                             "assets/animation/Git.json",
                             fit: BoxFit.contain,
                             filterQuality: FilterQuality.low,
                           ),
-                          Lottie.network(
+                          Lottie.asset(
                             "assets/animation/css white.json",
                             fit: BoxFit.contain,
                             filterQuality: FilterQuality.low,
@@ -428,7 +428,7 @@ class _MobileViewState extends State<MobileView> {
                     ),
                   ],
                 ),
-                Lottie.network(
+                Lottie.asset(
                   "assets/animation/colored rocket.json",
                   fit: BoxFit.scaleDown,
                   height: sizeHeight / 3,

@@ -112,7 +112,7 @@ class _DesktopViewState extends State<DesktopView> {
                                             "Flutter/Android (Jetpack Compose) Developer.\n\n"),
                                     TextSpan(
                                       text:
-                                          "AKA Vivek. Flutter/Android Developer from India, Dehradun / Uttar Pradesh with \nA code-minded front-end software engineer focused on building beautiful interfaces\n& experiences and Convert Ideas, Design To System With Frontend Side (Android Apps, Flutter Application)\nalso The Backend Side With (SpringBoot, Ktor, Nest.js) Always Trying To Build Tools To Help and Improve My Work.",
+                                          "AKA Vivek. Flutter/Android Developer from India, Dehradun / Uttar Pradesh with \nA code-minded front-end software engineer focused on building beautiful interfaces\n& experiences and Convert Ideas, Design To System With Frontend Side (Android Apps, Flutter Application)\nalso The Backend Side With (Express.js) Always Trying To Build Tools To Help and Improve My Work.",
                                       style: TextStyle(
                                           overflow: TextOverflow.visible,
                                           color: themeChange
@@ -137,7 +137,7 @@ class _DesktopViewState extends State<DesktopView> {
                                       : AppColors.purpelColor,
                                   image: DecorationImage(
                                       image:
-                                          NetworkImage("assets/image/two.png"),
+                                          Image.asset("assets/image/two.png").image,
                                       fit: BoxFit.cover),
                                   boxShadow: <BoxShadow>[
                                     BoxShadow(
@@ -375,73 +375,73 @@ class _DesktopViewState extends State<DesktopView> {
                                   Padding(
                                     padding: const EdgeInsets.only(
                                         top: 21.0, left: 21.0),
-                                    child: Lottie.network(
-                                      "assets/animation/Flutter.json",
+                                    child: Lottie.asset(
+                                      "assets/animation/flutter.json",
                                       fit: BoxFit.contain,
-                                      filterQuality: FilterQuality.high,
+                                      filterQuality: FilterQuality.low,
                                     ),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(
                                         top: 21.0, left: 21.0),
-                                    child: Lottie.network(
+                                    child: Lottie.asset(
                                       "assets/animation/Android.json",
                                       fit: BoxFit.contain,
-                                      filterQuality: FilterQuality.high,
+                                      filterQuality: FilterQuality.low,
                                     ),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(
                                         top: 21.0, left: 21.0),
-                                    child: Lottie.network(
+                                    child: Lottie.asset(
                                       "assets/animation/Android Studio.json",
                                       fit: BoxFit.contain,
-                                      filterQuality: FilterQuality.high,
+                                      filterQuality: FilterQuality.low,
                                     ),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(
                                         top: 21.0, left: 21.0),
-                                    child: Lottie.network(
+                                    child: Lottie.asset(
                                       "assets/animation/html.json",
                                       fit: BoxFit.contain,
-                                      filterQuality: FilterQuality.high,
+                                      filterQuality: FilterQuality.low,
                                     ),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(
                                         top: 21.0, left: 21.0),
-                                    child: Lottie.network(
+                                    child: Lottie.asset(
                                       "assets/animation/Mysql.json",
                                       fit: BoxFit.contain,
-                                      filterQuality: FilterQuality.high,
+                                      filterQuality: FilterQuality.low,
                                     ),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(
                                         top: 21.0, left: 21.0),
-                                    child: Lottie.network(
+                                    child: Lottie.asset(
                                       "assets/animation/Github.json",
                                       fit: BoxFit.contain,
-                                      filterQuality: FilterQuality.high,
+                                      filterQuality: FilterQuality.low,
                                     ),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(
                                         top: 21.0, left: 21.0),
-                                    child: Lottie.network(
+                                    child: Lottie.asset(
                                       "assets/animation/Git.json",
                                       fit: BoxFit.contain,
-                                      filterQuality: FilterQuality.high,
+                                      filterQuality: FilterQuality.low,
                                     ),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(
                                         top: 21.0, left: 21.0),
-                                    child: Lottie.network(
+                                    child: Lottie.asset(
                                       "assets/animation/css white.json",
                                       fit: BoxFit.contain,
-                                      filterQuality: FilterQuality.high,
+                                      filterQuality: FilterQuality.low,
                                     ),
                                   ),
                                 ],
@@ -474,12 +474,12 @@ class _DesktopViewState extends State<DesktopView> {
                                 ],
                               ),
                             ),
-                            Lottie.network(
+                            Lottie.asset(
                               "assets/animation/colored rocket.json",
                               fit: BoxFit.scaleDown,
                               height: sizeHeight / 3,
                               // width: sizeWidth / 5,
-                              filterQuality: FilterQuality.high,
+                              filterQuality: FilterQuality.low,
                             ),
                           ],
                         ),
